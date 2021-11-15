@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "io.codebyexample.servicec.proto.v1";
+package io.codebyexample.servicec.proto.v1;
+
+service ServiceC {
+  rpc CallMethodC (CRequest) returns (CResponse);
+}
+
+message CRequest {
+  int32 id = 1;
+}
+
+message CResponse {
+  string message = 1;
+}

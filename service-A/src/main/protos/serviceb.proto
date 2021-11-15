@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "io.codebyexample.serviceb.proto.v1";
+package io.codebyexample.serviceb.proto.v1;
+
+service ServiceB {
+  rpc CallMethodB (BRequest) returns (BResponse);
+}
+
+message BRequest {
+  int32 id = 1;
+}
+
+message BResponse {
+  string message = 1;
+}
