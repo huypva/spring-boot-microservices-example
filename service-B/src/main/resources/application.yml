@@ -1,0 +1,26 @@
+grpc:
+  server:
+    port: 8182
+
+spring:
+  application:
+    name: service-B
+  profiles:
+    active: local
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+opentracing:
+  jaeger:
+    service-name: service-B
+    enabled: true
+    udp-sender:
+      host: localhost
+      port: 6831
+    log-spans: true
+    enable-b3-propagation: false
+    probabilistic-sampler:
+      sampling-rate: 1.0
