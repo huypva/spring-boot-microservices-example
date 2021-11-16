@@ -1,0 +1,25 @@
+grpc:
+  server:
+    port: 8184
+
+spring:
+  application:
+    name: service-D
+  profiles:
+    active: local
+  kafka:
+    bootstrap-servers: "localhost:9093"
+    listener:
+      missing-topics-fatal: false
+
+opentracing:
+  jaeger:
+    service-name: service-D
+    enabled: true
+    udp-sender:
+      host: localhost
+      port: 6831
+    log-spans: true
+    enable-b3-propagation: false
+    probabilistic-sampler:
+      sampling-rate: 1.0
