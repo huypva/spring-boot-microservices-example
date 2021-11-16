@@ -5,6 +5,8 @@ import io.codebyexample.servicea.core.entity.MessageC;
 import io.codebyexample.servicea.core.entity.MessageD;
 import io.codebyexample.servicea.core.usercase.UseCase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -21,22 +23,26 @@ public class HttpController {
     return useCase.callServiceB(bMessage);
   }
 
-  @RequestMapping(value = "/call_service_c/{id}", method = RequestMethod.GET)
-  public String callServiceC(@PathVariable("id") int id,
+  @RequestMapping(value = "/message_c/{id}", method = RequestMethod.POST)
+  public ResponseEntity setMessageC(@PathVariable("id") int id,
       @RequestParam("message") String message) {
     MessageC messageC = MessageC.builder()
         .id(id)
         .message(message)
         .build();
-    return useCase.callServiceC(messageC);
+    useCase.setMessageC(messageC);
+
+    return new ResponseEntity(HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/call_service_d/{id}", method = RequestMethod.GET)
-  public String callServiceD(@PathVariable("userId") long userId,
-      @RequestParam("bankId") int bankId,
-      @RequestBody String message) {
-    MessageD messageD = MessageD.builder().build();
-    return useCase.callServiceD(messageD);
+  @RequestMapping(value = "/message_c/{id}", method = RequestMethod.GET)
+  public String getMessageC(@PathVariable("id") int id) {
+    return useCase.getMessageC(id);
+  }
+
+  @RequestMapping(value = "/call_service_d", method = RequestMethod.POST)
+  public void callServiceD(@RequestBody MessageD messageD) {
+    useCase.sendMessageD(messageD);
   }
 
 }

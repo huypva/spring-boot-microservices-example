@@ -1,16 +1,24 @@
 syntax = "proto3";
 option java_multiple_files = true;
-option java_package = "io.codebyexample.servicec.proto.v1";
+option java_package = "io.codebyexample.servicea.proto.v1";
 package io.codebyexample.servicec.proto.v1;
 
+import "google/protobuf/empty.proto";
+
 service ServiceC {
-  rpc CallMethodC (CRequest) returns (CResponse);
+  rpc SetMessage (SetMessageRequest) returns (google.protobuf.Empty);
+  rpc GetMessage (GetMessageRequest) returns (GetMessageResponse);
 }
 
-message CRequest {
+message SetMessageRequest {
+  int32 id = 1;
+  string message = 2;
+}
+
+message GetMessageRequest {
   int32 id = 1;
 }
 
-message CResponse {
+message GetMessageResponse {
   string message = 1;
 }

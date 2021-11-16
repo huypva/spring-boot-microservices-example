@@ -2,7 +2,9 @@ package io.codebyexample.servicea.dataprovider.grpcapi.serviceb;
 
 import io.codebyexample.servicea.core.entity.MessageB;
 
-/** @author sateam */
+/**
+ * @author huypva
+ * */
 public interface ServiceBApi {
 
   String callMethodB(MessageB bMessage);

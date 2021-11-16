@@ -6,7 +6,9 @@ import com.google.protobuf.util.JsonFormat.Printer;
 import com.google.rpc.ErrorInfo;
 import lombok.extern.slf4j.Slf4j;
 
-/** @author sateam */
+/**
+ * @author huypva
+ * */
 @Slf4j
 public final class ProtobufUtils {
   private static final JsonFormat.TypeRegistry TYPE_REGISTRY =

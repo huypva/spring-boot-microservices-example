@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author huypva
  */
-
 @ConditionalOnProperty(value = "opentracing.jaeger.enabled", havingValue = "false", matchIfMissing = false)
 @Configuration
 public class TracerConfiguration {

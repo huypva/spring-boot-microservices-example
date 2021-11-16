@@ -1,16 +1,17 @@
 package io.codebyexample.servicea.dataprovider.grpcapi.servicec;
 
 import io.codebyexample.servicea.core.entity.MessageC;
-import io.codebyexample.servicea.util.ProtobufUtils;
-import io.codebyexample.servicec.proto.v1.CRequest;
-import io.codebyexample.servicec.proto.v1.CResponse;
-import io.codebyexample.servicec.proto.v1.ServiceCGrpc.ServiceCBlockingStub;
-import io.grpc.StatusRuntimeException;
+import io.codebyexample.servicea.proto.v1.GetMessageRequest;
+import io.codebyexample.servicea.proto.v1.GetMessageResponse;
+import io.codebyexample.servicea.proto.v1.ServiceCGrpc.ServiceCBlockingStub;
+import io.codebyexample.servicea.proto.v1.SetMessageRequest;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Component;
 
-/** @author sateam */
+/**
+ * @author huypva
+ * */
 @Slf4j
 @Component
 public class ServiceCClient implements ServiceCApi {
@@ -19,17 +20,23 @@ public class ServiceCClient implements ServiceCApi {
   private ServiceCBlockingStub serviceCBlockingStub;
 
   @Override
-  public String callMethodC(MessageC messageC) {
-    try {
-      CRequest request = CRequest.newBuilder()
-          .setId(messageC.getId())
-          .build();
+  public void setMessage(MessageC messageC) {
+    SetMessageRequest request = SetMessageRequest.newBuilder()
+        .setId(messageC.getId())
+        .setMessage(messageC.getMessage())
+        .build();
 
-      final CResponse response = this.serviceCBlockingStub.callMethodC(request);
+    this.serviceCBlockingStub.setMessage(request);
+  }
 
-      return ProtobufUtils.print(response);
-    } catch (final StatusRuntimeException e) {
-      return "FAILED with " + e.getStatus().getCode().name();
-    }
+  @Override
+  public String getMessage(int id) {
+    GetMessageRequest request = GetMessageRequest.newBuilder()
+        .setId(id)
+        .build();
+
+    GetMessageResponse response = this.serviceCBlockingStub.getMessage(request);
+
+    return response.getMessage();
   }
 }

@@ -13,11 +13,6 @@ grpc:
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
-    serviced:
-      address: static://localhost:8184
-      enableKeepAlive: true
-      keepAliveWithoutCalls: true
-      negotiationType: plaintext
 spring:
   profiles:
     active: local

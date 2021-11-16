@@ -1,11 +1,12 @@
 package io.codebyexample.servicea.dataprovider.messaging.kafka;
 
-import io.codebyexample.servicea.core.entity.MessageB;
 
-/** @author sateam */
+import io.codebyexample.servicea.core.entity.MessageD;
+
+/**
+ * @author huypva
+ * */
 public interface KafkaProducer {
 
-  void publishToBank(MessageB bank);
-
-  void notImplement(String message);
+  void sendMessageD(MessageD messageD);
 }
