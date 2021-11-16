@@ -1,8 +1,8 @@
 package io.codebyexample.serviceb.entrypoint.rabbitmq;
 
 import io.codebyexample.serviceb.core.entity.BMessage;
-import io.codebyexample.serviceb.core.usercase.greeter.BUseCase;
-import io.codebyexample.serviceb.utils.GsonUtils;
+import io.codebyexample.serviceb.core.usercase.BUseCase;
+import io.codebyexample.serviceb.util.GsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

@@ -1,4 +1,4 @@
-package io.codebyexample.serviceb.core.usercase.greeter;
+package io.codebyexample.serviceb.core.usercase;
 
 import io.codebyexample.serviceb.core.entity.BMessage;
 

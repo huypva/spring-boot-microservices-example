@@ -1,8 +1,8 @@
-package io.codebyexample.serviceb.core.usercase.greeter;
+package io.codebyexample.serviceb.core.usercase;
 
 import io.codebyexample.serviceb.core.entity.BMessage;
 import io.codebyexample.serviceb.dataprovider.messaging.rabbitmq.RabbitProvider;
-import io.codebyexample.serviceb.utils.GsonUtils;
+import io.codebyexample.serviceb.util.GsonUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

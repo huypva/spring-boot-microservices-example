@@ -17,9 +17,8 @@ package io.codebyexample.serviceb.dataprovider.messaging.rabbitmq;
 
 import io.codebyexample.serviceb.configuration.RabbitConfiguration;
 import io.codebyexample.serviceb.core.entity.BMessage;
-import io.codebyexample.serviceb.utils.GsonUtils;
+import io.codebyexample.serviceb.util.GsonUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,11 +1,10 @@
 package io.codebyexample.serviceb.entrypoint.grpc;
 
-import io.codebyexample.serviceb.core.entity.BMessage;
-import io.codebyexample.serviceb.core.usercase.greeter.BUseCase;
+import io.codebyexample.serviceb.core.usercase.BUseCase;
 import io.codebyexample.serviceb.proto.v1.BRequest;
 import io.codebyexample.serviceb.proto.v1.BResponse;
 import io.codebyexample.serviceb.proto.v1.ServiceBGrpc;
-import io.codebyexample.serviceb.utils.ProtobufUtils;
+import io.codebyexample.serviceb.util.ProtobufUtils;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;

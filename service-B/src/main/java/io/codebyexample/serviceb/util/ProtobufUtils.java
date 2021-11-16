@@ -1,4 +1,4 @@
-package io.codebyexample.serviceb.utils;
+package io.codebyexample.serviceb.util;
 
 import com.google.protobuf.MessageOrBuilder;
 import com.google.protobuf.util.JsonFormat;
