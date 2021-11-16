@@ -19,10 +19,17 @@ The example project for StringBoot service
 ├── service-A
 │   ├── Dockerfile
 │   ...
-├── bank-service
+├── service-B
 │   ├── Dockerfile
 │   ...
-├── docker-compose.yaml
+├── service-C
+│   ├── Dockerfile
+│   ...
+├── service-D
+│   ├── Dockerfile
+│   ...
+├── infrastructure
+│   ├── docker-compose.yml
 |
 └── README.md
 ```
@@ -37,16 +44,33 @@ The example project for StringBoot service
 ## Start infrastructure
 
 ```shell script
-$ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastructure up -d
+$ cd infrastructure
+$ docker-compose up -d
 ```
 
 ## Start services
 ### Start services in local
 
-- Build project
+- Start service-A
 ```shell script
 $ ./mvnw clean package
-$ cd hello-word
+$ cd service-A
+$ ../mvnw spring-boot:run
+...
+```
+
+- Start service-B
+```shell script
+$ ./mvnw clean package
+$ cd service-B
+$ ../mvnw spring-boot:run
+...
+```
+
+- Start service-C
+```shell script
+$ ./mvnw clean package
+$ cd service-C
 $ ../mvnw spring-boot:run
 ...
 ```
@@ -60,8 +84,11 @@ $ docker-compose -f ./docker-compose-service.yml -p spring-boot-service up -d
 ## Run testing
 
 ```shell script
-curl http://localhost:8081/greet?name=World
+$ cd script
+$ ./send_test_request.sh
 ```
+
+- Open Jeager tool at http://localhost:16686/
 
 ## Stop project
 
@@ -72,9 +99,6 @@ curl http://localhost:8081/greet?name=World
 $ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastructure down
 $ docker-compose -f ./docker-compose-service.yml -p spring-boot-service down
 ```
-
-
-- Open jeager tool on browser at http://localhost:16686/
 
 ## Contribute
 
