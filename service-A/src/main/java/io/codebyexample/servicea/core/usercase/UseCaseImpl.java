@@ -4,6 +4,7 @@ import io.codebyexample.servicea.core.entity.MessageB;
 import io.codebyexample.servicea.core.entity.MessageC;
 import io.codebyexample.servicea.core.entity.MessageD;
 import io.codebyexample.servicea.dataprovider.grpcapi.servicec.ServiceCApi;
+import io.codebyexample.servicea.dataprovider.messaging.kafka.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class UseCaseImpl implements UseCase {
   @Autowired
   private final ServiceCApi serviceCApi;
 
+  @Autowired
+  KafkaProducer kafkaProducer;
+
   @Override
   public String callServiceB(MessageB messageB) {
     return serviceBApi.callMethodB(messageB);
@@ -41,6 +45,6 @@ public class UseCaseImpl implements UseCase {
 
   @Override
   public void sendMessageD(MessageD messageD) {
-//    return serviceDApi.callMethodD(messageD);
+    kafkaProducer.sendMessageD(messageD);
   }
 }

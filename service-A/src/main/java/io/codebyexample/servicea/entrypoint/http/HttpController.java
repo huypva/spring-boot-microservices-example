@@ -40,8 +40,8 @@ public class HttpController {
     return useCase.getMessageC(id);
   }
 
-  @RequestMapping(value = "/call_service_d", method = RequestMethod.POST)
-  public void callServiceD(@RequestBody MessageD messageD) {
+  @RequestMapping(value = "/send_message_d", method = RequestMethod.POST)
+  public void sendMessageD(@RequestBody MessageD messageD) {
     useCase.sendMessageD(messageD);
   }
 

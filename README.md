@@ -1,15 +1,25 @@
 The example project for StringBoot service
 
 <div align="center">
-    <img src="./assets/images/spring_boot_icon.png"/>
+    <img src="./assets/images/architecture.png"/>
 </div>
 
 ## Getting Started
 
+## Technology List
+
+- Spring Cloud Consul
+- Spring Cloud Sleuth
+- Docker
+- gRPC
+
 ## Project structure
 ```
 .
-├── hello-world
+├── service-A
+│   ├── Dockerfile
+│   ...
+├── bank-service
 │   ├── Dockerfile
 │   ...
 ├── docker-compose.yaml
@@ -63,6 +73,13 @@ $ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastru
 $ docker-compose -f ./docker-compose-service.yml -p spring-boot-service down
 ```
 
+
+- Open jeager tool on browser at http://localhost:16686/
+
 ## Contribute
 
 ## Reference
+
+- https://github.com/yidongnan/spring-cloud-consul-example
+- https://github.com/piomin/sample-spring-microservices-new
+- https://github.com/rkudryashov/microservices-example

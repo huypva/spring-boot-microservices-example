@@ -21,7 +21,7 @@ public class KafkaProducerImpl implements KafkaProducer {
 
   @Override
   public void sendMessageD(MessageD messageD) {
-    userKafka.send("MessageD", GsonUtils.toJson(messageD))
+    userKafka.send("D_TOPIC", GsonUtils.toJson(messageD))
         .addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
           @Override
