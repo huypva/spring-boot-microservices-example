@@ -4,13 +4,16 @@ import io.codebyexample.servicec.core.entity.MessageC;
 import io.codebyexample.servicec.dataprovider.messagec.CRepository;
 import io.codebyexample.servicec.dataprovider.messagec.MessageCDto;
 import io.codebyexample.servicec.exception.MessageNotFoundException;
+import io.codebyexample.servicec.util.GsonUtils;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * @author huypva
  */
+@Slf4j
 @AllArgsConstructor
 @Service
 public class CUseCaseImpl implements CUseCase {
@@ -20,7 +23,10 @@ public class CUseCaseImpl implements CUseCase {
 
     @Override
     public void setMessageC(MessageC messageC) {
+        log.info("CUseCase.setMessageC: " + GsonUtils.toJson(messageC));
         MessageCDto messageCDto = new MessageCDto(messageC.getId(), messageC.getMessage());
+        log.info("CUseCase.setMessageC: " + GsonUtils.toJson(messageCDto));
+
         cRepository.save(messageCDto);
     }
 

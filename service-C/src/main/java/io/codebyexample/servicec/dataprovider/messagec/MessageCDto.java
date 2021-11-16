@@ -21,7 +21,6 @@ import lombok.ToString;
 public class MessageCDto {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "message_id")
   private int id;
 

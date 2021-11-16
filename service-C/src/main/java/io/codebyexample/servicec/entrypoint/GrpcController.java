@@ -22,7 +22,6 @@ public class GrpcController extends ServiceCGrpc.ServiceCImplBase {
 
   @Override
   public void setMessage(SetMessageRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
-
     MessageC messageC = MessageC.builder()
         .id(request.getId())
         .message(request.getMessage())
