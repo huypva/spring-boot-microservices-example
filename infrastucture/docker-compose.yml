@@ -60,6 +60,11 @@ services:
       MYSQL_DATABASE: service_c
     ports:
       - 3306:3306
+  redis:
+    image: "redis:alpine"
+    container_name: 'redis'
+    ports:
+      - 6379:6379
 networks:
   kafka-network:
     driver: bridge
