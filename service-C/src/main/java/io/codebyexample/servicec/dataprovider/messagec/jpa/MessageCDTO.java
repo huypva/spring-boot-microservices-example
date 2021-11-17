@@ -1,4 +1,4 @@
-package io.codebyexample.servicec.dataprovider.messagec;
+package io.codebyexample.servicec.dataprovider.messagec.jpa;
 
 import javax.persistence.*;
 import javax.persistence.Id;
@@ -18,7 +18,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "message_c")
-public class MessageCDto {
+public class MessageCDTO {
 
   @Id
   @Column(name = "message_id")

@@ -17,6 +17,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+  redis:
+    redisson:
+      file: classpath:redisson.yml
 
 opentracing:
   jaeger:

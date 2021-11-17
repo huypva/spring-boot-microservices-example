@@ -2,7 +2,7 @@ package io.codebyexample.servicec.entrypoint;
 
 import com.google.protobuf.Empty;
 import io.codebyexample.servicec.core.entity.MessageC;
-import io.codebyexample.servicec.core.usecase.CUseCase;
+import io.codebyexample.servicec.core.usecase.UseCaseC;
 import io.codebyexample.servicec.proto.v1.GetMessageRequest;
 import io.codebyexample.servicec.proto.v1.GetMessageResponse;
 import io.codebyexample.servicec.proto.v1.ServiceCGrpc;
@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GrpcController extends ServiceCGrpc.ServiceCImplBase {
 
   @Autowired
-  CUseCase useCase;
+  UseCaseC useCase;
 
   @Override
   public void setMessage(SetMessageRequest request, StreamObserver<com.google.protobuf.Empty> responseObserver) {
@@ -36,6 +36,7 @@ public class GrpcController extends ServiceCGrpc.ServiceCImplBase {
   @Override
   public void getMessage(GetMessageRequest request, StreamObserver<GetMessageResponse> responseObserver) {
     MessageC messageC = useCase.getMessageC(request.getId());
+
     GetMessageResponse response = GetMessageResponse.newBuilder()
         .setMessage(messageC.getMessage())
         .build();

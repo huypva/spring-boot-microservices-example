@@ -20,6 +20,7 @@
 		<com.google.protobuf.version>3.7.1</com.google.protobuf.version>
 		<grpc-spring-boot-starter.version>3.2.2</grpc-spring-boot-starter.version>
 		<io.grpc.version>1.37.0</io.grpc.version>
+		<redisson.version>3.16.1</redisson.version>
 
 		<kr.motd.maven.version>1.5.0.Final</kr.motd.maven.version>
 		<org.xolstice.maven.plugins.version>0.6.1</org.xolstice.maven.plugins.version>
@@ -65,6 +66,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--spring redisson starter-->
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson-spring-boot-starter</artifactId>
+			<version>${redisson.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos -->
 		<dependency>
