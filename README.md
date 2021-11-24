@@ -53,24 +53,32 @@ $ docker-compose up -d
 
 - Start service-A
 ```shell script
-$ ./mvnw clean package
 $ cd service-A
+$ ../mvnw clean package
 $ ../mvnw spring-boot:run
 ...
 ```
 
 - Start service-B
 ```shell script
-$ ./mvnw clean package
 $ cd service-B
+$ ../mvnw clean package
 $ ../mvnw spring-boot:run
 ...
 ```
 
 - Start service-C
 ```shell script
-$ ./mvnw clean package
 $ cd service-C
+$ ../mvnw clean package
+$ ../mvnw spring-boot:run
+...
+```
+
+- Start service-D
+```shell script
+$ cd service-D
+$ ../mvnw clean package
 $ ../mvnw spring-boot:run
 ...
 ```

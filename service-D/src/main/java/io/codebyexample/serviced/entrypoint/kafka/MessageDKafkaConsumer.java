@@ -15,12 +15,12 @@ import org.springframework.stereotype.Service;
  * */
 @Slf4j
 @Service
-public class DKafkaConsumer {
+public class MessageDKafkaConsumer {
 
   @Autowired
   UseCase dUseCase;
 
-  @KafkaListener(topics = "D_TOPIC", groupId = "dservice")
+  @KafkaListener(topics = "D_TOPIC", groupId = "serviced")
   public void consume(ConsumerRecord<String, String> record) {
     try {
       log.info(
@@ -28,6 +28,7 @@ public class DKafkaConsumer {
           record.partition(),
           record.offset(),
           record.value());
+      record.headers().forEach(s -> System.out.println(s.key() + "->" + new String(s.value())));
 
       MessageD userMessage = GsonUtils.fromJson(record.value(), MessageD.class);
       dUseCase.processDMessage(userMessage);

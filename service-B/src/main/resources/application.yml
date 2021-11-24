@@ -1,3 +1,5 @@
+server:
+  port : 8082
 grpc:
   server:
     port: 8182
@@ -12,15 +14,10 @@ spring:
     port: 5672
     username: guest
     password: guest
-
-opentracing:
-  jaeger:
-    service-name: service-B
-    enabled: true
-    udp-sender:
-      host: localhost
-      port: 6831
-    log-spans: true
-    enable-b3-propagation: false
-    probabilistic-sampler:
-      sampling-rate: 1.0
+  sleuth:
+    propagation:
+      type: B3 #,W3C
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411

@@ -1,5 +1,6 @@
 package io.codebyexample.servicea.core.entity;
 
+import java.io.Serializable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

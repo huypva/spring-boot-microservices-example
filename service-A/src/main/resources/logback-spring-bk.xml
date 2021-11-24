@@ -2,18 +2,23 @@
 <configuration>
 
   <property name="LOGS" value="./logs" />
-  <property name="FILE_NAME" value="system-B" />
+  <property name="FILE_NAME" value="system-C" />
+  <springProperty scope="context" name="springAppName" source="spring.application.name"/>
 
   <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
     <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d %p %C{0} [%t] %m%n</Pattern>
+      <Pattern>
+        %d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [${springAppName},%X{traceId:-},%X{spanId:-}] [%t] %-40.40logger{39}: %m%n
+      </Pattern>
     </layout>
   </appender>
 
   <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOGS}/${FILE_NAME}.log</file>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <Pattern>%d %p %C{0} [%t] %m%n</Pattern>
+      <Pattern>
+        %d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [${springAppName},%X{traceId:-},%X{spanId:-}] [%t] %-40.40logger{39}: %m%n
+      </Pattern>
     </encoder>
 
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -29,8 +34,8 @@
 
   <!-- LOG everything at INFO level -->
   <root level="info">
-<!--    <appender-ref ref="RollingFile" />-->
-        <appender-ref ref="Console" />
+    <!--    <appender-ref ref="RollingFile" />-->
+    <appender-ref ref="Console" />
   </root>
 
 </configuration>

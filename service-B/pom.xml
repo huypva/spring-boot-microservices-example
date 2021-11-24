@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
+		<version>2.4.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -16,10 +16,12 @@
 	<name>Service B</name>
 
 	<properties>
+		<spring-cloud.version>2020.0.4</spring-cloud.version>
+
+		<net.devh.grpc.starter.version>2.12.0.RELEASE</net.devh.grpc.starter.version>
+		<io.grpc.version>1.37.0</io.grpc.version>
 		<com.google.api.grpc.version>1.18.0</com.google.api.grpc.version>
 		<com.google.protobuf.version>3.7.1</com.google.protobuf.version>
-		<grpc-spring-boot-starter.version>3.2.2</grpc-spring-boot-starter.version>
-		<io.grpc.version>1.37.0</io.grpc.version>
 
 		<kr.motd.maven.version>1.5.0.Final</kr.motd.maven.version>
 		<org.xolstice.maven.plugins.version>0.6.1</org.xolstice.maven.plugins.version>
@@ -32,49 +34,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<!--  To support gRPC SSL  -->
-		<dependency>
-			<artifactId>grpc-netty-shaded</artifactId>
-			<groupId>io.grpc</groupId>
-			<scope>runtime</scope>
-			<version>${io.grpc.version}</version>
-		</dependency>
-		<dependency>
-			<artifactId>netty-tcnative</artifactId>
-			<groupId>io.netty</groupId>
-			<scope>runtime</scope>
-			<version>${netty-tcnative.version}</version>
-		</dependency>
+		<!--  gRPC  -->
 		<dependency>
 			<groupId>net.devh</groupId>
 			<artifactId>grpc-spring-boot-starter</artifactId>
-			<version>2.12.0.RELEASE</version>
-			<exclusions>
-				<exclusion>
-					<groupId>io.grpc</groupId>
-					<artifactId>grpc-netty-shaded</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>${net.devh.grpc.starter.version}</version>
 		</dependency>
-		<!--Messaging-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>io.opentracing.contrib</groupId>
-			<artifactId>opentracing-grpc</artifactId>
-			<version>0.2.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.opentracing.contrib</groupId>
-			<artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>
-			<version>3.1.2</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.google.api.grpc/proto-google-common-protos -->
+		<!--  google.protobuf  -->
 		<dependency>
 			<artifactId>proto-google-common-protos</artifactId>
 			<groupId>com.google.api.grpc</groupId>
@@ -84,6 +50,25 @@
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java-util</artifactId>
 			<version>${com.google.protobuf.version}</version>
+		</dependency>
+
+		<!--Messaging-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.zipkin.brave</groupId>
+			<artifactId>brave-instrumentation-grpc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 
 		<!--  Lombok  -->
@@ -99,6 +84,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<extensions>
