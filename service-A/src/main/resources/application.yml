@@ -34,3 +34,22 @@ spring:
   profiles: "kafka"
   kafka:
     bootstrap-servers: "localhost:9093"
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, shutdown, prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        http: false
+      sla:
+        http:
+          server:
+            requests: 1ms,20ms,50ms,100ms,200ms,500ms,1s,2s,5s,10s,10s,50s

@@ -69,8 +69,6 @@
 			<artifactId>redisson-spring-boot-starter</artifactId>
 			<version>${redisson.version}</version>
 		</dependency>
-
-
 		<!-- sleuth -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -84,14 +82,23 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
-
+		<!--  actuator  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!--  micrometer  -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
 		<!--lombok-->
 		<dependency>
 			<artifactId>lombok</artifactId>
 			<groupId>org.projectlombok</groupId>
 			<optional>true</optional>
 		</dependency>
-
+		<!--test-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

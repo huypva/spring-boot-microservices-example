@@ -104,7 +104,6 @@ $ ./send_test_request.sh
 - Stop infrastructure & services in docker
 
 ```shell script
-$ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastructure down
 $ docker-compose -f ./docker-compose-service.yml -p spring-boot-service down
 ```
 
