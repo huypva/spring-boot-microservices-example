@@ -3,17 +3,21 @@ server:
 grpc:
   server:
     port: 8182
-
+---
+spring.application.name: "service-B"
+spring.profiles.active: local
+spring.profiles.include: "rabbitmq,sleuth"
+---
 spring:
-  application:
-    name: service-B
-  profiles:
-    active: local
+  profiles: "rabbitmq"
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
+---
+spring:
+  profiles: "sleuth"
   sleuth:
     propagation:
       type: B3 #,W3C

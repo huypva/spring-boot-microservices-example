@@ -3,16 +3,20 @@ server:
 grpc:
   server:
     port: 8184
-
+---
+spring.application.name: "service-D"
+spring.profiles.active: local
+spring.profiles.include: "kafka,sleuth"
+---
 spring:
-  application:
-    name: service-D
-  profiles:
-    active: local
+  profiles: "kafka"
   kafka:
     bootstrap-servers: "localhost:9093"
     listener:
       missing-topics-fatal: false
+---
+spring:
+  profiles: "sleuth"
   sleuth:
     propagation:
       type: B3 #,W3C

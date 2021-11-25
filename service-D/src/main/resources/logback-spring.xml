@@ -3,8 +3,8 @@
 
   <property name="LOGS" value="./logs" />
   <property name="FILE_NAME" value="system-C" />
-  <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [${springAppName},%X{traceId:-},%X{spanId:-}] [%t] %-40.40logger{39}: %m%n" />
   <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+  <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [${springAppName},%X{traceId:-},%X{spanId:-}] [%t] %-40.40logger{39}: %m%n" />
 
   <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
     <layout class="ch.qos.logback.classic.PatternLayout">

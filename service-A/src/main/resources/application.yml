@@ -1,8 +1,13 @@
 server:
   port : 8081
-
 grpc:
   port: 8181
+---
+spring.application.name: "service-A"
+spring.profiles.active: local
+spring.profiles.include: "sleuth,kafka"
+---
+grpc:
   client:
     serviceb:
       address: static://localhost:8182
@@ -14,12 +19,9 @@ grpc:
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
-
+---
 spring:
-  profiles:
-    active: local
-  application:
-    name: "service-A"
+  profiles: "sleuth"
   sleuth:
     propagation:
       type: B3 #,W3C
@@ -27,5 +29,8 @@ spring:
       probability: 1.0
   zipkin:
     base-url: http://localhost:9411
+---
+spring:
+  profiles: "kafka"
   kafka:
     bootstrap-servers: "localhost:9093"
