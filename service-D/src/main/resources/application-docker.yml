@@ -1,0 +1,2 @@
+spring.kafka.bootstrap-servers: ${KAFKA_HOST}:9093
+spring.zipkin.base-url: http://${ZIPKIN_HOST}:9411

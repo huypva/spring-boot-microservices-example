@@ -86,7 +86,7 @@ $ ../mvnw spring-boot:run
 ### Start services in docker 
 
 ```shell script
-$ docker-compose -f ./docker-compose-service.yml -p spring-boot-service up -d
+$ docker-compose -f ./docker-compose-service.yml up -d
 ```
 
 ## Run testing
